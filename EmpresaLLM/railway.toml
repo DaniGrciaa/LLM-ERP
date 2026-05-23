@@ -4,3 +4,6 @@ buildCommand = "./mvnw clean package -DskipTests"
 [deploy]
 startCommand = "java -jar target/*.jar --server.port=$PORT"
 restartPolicyType = "ON_FAILURE"
+[variables]
+RAILPACK_JDK_VERSION = "21"
+MAVEN_OPTS = "-Xmx1024m"
