@@ -1,4 +1,9 @@
-const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+if (!backendUrl) {
+  throw new Error("Falta configurar VITE_BACKEND_URL");
+}
+
 const BASE_URL = `${backendUrl}/api/chat`;
 
 export const chatService = {
