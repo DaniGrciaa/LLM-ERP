@@ -7,9 +7,27 @@ export default function ChatPanel({ messages, input, setInput, loading, onSendMe
   const containerRef = React.useRef(null);
 
   React.useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = containerRef.current.scrollHeight;
-    }
+    const scrollToBottom = () => {
+      if (containerRef.current) {
+        containerRef.current.scrollTop = containerRef.current.scrollHeight;
+      }
+    };
+
+    scrollToBottom();
+    
+    if (!containerRef.current) return;
+
+    const observer = new MutationObserver(() => {
+      scrollToBottom();
+    });
+
+    observer.observe(containerRef.current, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    return () => observer.disconnect();
   }, [messages, loading]);
 
   const handleKeyDown = (e) => {
@@ -76,4 +94,3 @@ export default function ChatPanel({ messages, input, setInput, loading, onSendMe
     </div>
   );
 }
-

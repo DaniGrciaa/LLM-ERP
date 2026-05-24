@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import ChatPanel from './components/ChatPanel';
 import CyberBackground from './components/CyberBackground';
-import InventorySummary from './components/InventorySummary';
-import StatsCharts from './components/StatsCharts';
-import ProductTable from './components/ProductTable';
-import ActivityFeed from './components/ActivityFeed';
 import { chatService } from './services/chatService';
 
 export default function App() {
@@ -13,36 +9,12 @@ export default function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [dashboardData, setDashboardData] = useState({
-    totalProductos: 0,
-    unidadesStock: 0,
-    productosBajoStock: 0,
-    perdidasDesechos: 0,
-    productos: [],
-    stockPorCategoria: [],
-    desechos: [],
-    actividadReciente: []
-  });
-
-  const fetchDashboard = async () => {
-    try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:8080";
-      const res = await fetch(`${backendUrl}/api/dashboard`);
-      if (res.ok) {
-        const data = await res.json();
-        setDashboardData(data);
-      }
-    } catch (e) {
-      console.error("Error fetching dashboard", e);
-    }
-  };
 
   useEffect(() => {
     // Initial greeting
     setMessages([
       { role: 'bot', text: "Bienvenido a Stock Atelier. Soy tu agente ERP inteligente. Puedes pedirme que gestione productos, proveedores, pedidos, desechos o estadísticas." }
     ]);
-    fetchDashboard();
   }, []);
 
   const handleNewChat = () => {
@@ -63,9 +35,6 @@ export default function App() {
       const result = await chatService.sendMessage(userMsg, model);
       setMessages(prev => [...prev, { role: 'bot', text: result.answer }]);
 
-      // Ya no insertamos actividad mockeada, re-consultamos al backend
-      await fetchDashboard();
-
     } catch (err) {
       setMessages(prev => [...prev, {
         role: 'bot',
@@ -81,9 +50,8 @@ export default function App() {
       <CyberBackground />
       <Header model={model} setModel={setModel} onNewChat={handleNewChat} />
 
-      <div className="flex-1 flex flex-col lg:flex-row overflow-hidden relative z-0">
-        {/* Left Column: Chat */}
-        <div className="w-full lg:w-[40%] xl:w-[35%] h-[50vh] lg:h-full">
+      <div className="flex-1 flex flex-col overflow-hidden relative z-0">
+        <div className="w-full max-w-5xl mx-auto h-full shadow-2xl">
           <ChatPanel
             messages={messages}
             input={input}
@@ -91,19 +59,6 @@ export default function App() {
             loading={loading}
             onSendMessage={handleSendMessage}
           />
-        </div>
-
-        {/* Right Column: Dashboard */}
-        <div className="w-full lg:w-[60%] xl:w-[65%] h-[50vh] lg:h-full overflow-y-auto p-4 lg:p-8 scrollbar-thin scrollbar-thumb-cyan-900 scrollbar-track-transparent">
-          <div className="max-w-5xl mx-auto">
-            <InventorySummary data={dashboardData} />
-            <StatsCharts
-              stockData={dashboardData.stockPorCategoria}
-              desechosData={dashboardData.desechos}
-            />
-            <ProductTable products={dashboardData.productos} />
-            <ActivityFeed activities={dashboardData.actividadReciente} />
-          </div>
         </div>
       </div>
     </div>

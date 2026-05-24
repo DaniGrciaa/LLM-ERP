@@ -1,7 +1,7 @@
-const backendUrl = import.meta.env.VITE_BACKEND_URL;
+const backendUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL;
 
 if (!backendUrl) {
-  throw new Error("Falta configurar VITE_BACKEND_URL");
+  throw new Error("Falta configurar VITE_API_URL o VITE_BACKEND_URL");
 }
 
 const BASE_URL = `${backendUrl}/api/chat`;
