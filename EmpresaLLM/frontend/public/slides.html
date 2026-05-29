@@ -339,90 +339,79 @@
 </div>
 
 <!-- 4: ARQUITECTURA (diagrama) -->
-<div class="slide">
+<div class="slide" style="padding:30px 40px;">
   <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
   <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-    <span class="badge">Arquitectura</span>
-    <h2>Arquitectura del Sistema</h2>
-    <div class="gradient-line"></div>
-
-    <div class="arch-diagram">
-      <svg viewBox="0 0 860 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- background grid style lines -->
+    <div style="display:flex; align-items:center; gap:16px; margin-bottom:8px;">
+      <span class="badge" style="margin-bottom:0;">Arquitectura</span>
+      <h2 style="font-size:28px;">Arquitectura del Sistema</h2>
+    </div>
+    <div class="arch-diagram" style="margin-top:8px;">
+      <svg viewBox="0 0 960 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
         <defs>
-          <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stop-color="#22d3ee"/>
-            <stop offset="100%" stop-color="#3b82f6"/>
-          </linearGradient>
           <linearGradient id="boxGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="rgba(34,211,238,0.12)"/>
-            <stop offset="100%" stop-color="rgba(34,211,238,0.04)"/>
+            <stop offset="0%" stop-color="rgba(34,211,238,0.15)"/>
+            <stop offset="100%" stop-color="rgba(34,211,238,0.05)"/>
           </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
+          <linearGradient id="boxGradBlue" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(59,130,246,0.15)"/>
+            <stop offset="100%" stop-color="rgba(59,130,246,0.05)"/>
+          </linearGradient>
         </defs>
 
         <!-- USER -->
-        <rect x="10" y="70" width="120" height="100" rx="12" fill="url(#boxGrad)" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.4"/>
-        <circle cx="70" cy="100" r="14" stroke="#22d3ee" stroke-width="1.5" fill="none" filter="url(#glow)"/>
-        <circle cx="70" cy="100" r="4" fill="#22d3ee" opacity="0.6"/>
-        <line x1="56" y1="130" x2="84" y2="130" stroke="#22d3ee" stroke-width="1.5" opacity="0.4"/>
-        <line x1="52" y1="138" x2="88" y2="138" stroke="#22d3ee" stroke-width="1.5" opacity="0.3"/>
-        <line x1="48" y1="146" x2="92" y2="146" stroke="#22d3ee" stroke-width="1.5" opacity="0.2"/>
-        <text x="70" y="162" text-anchor="middle" fill="#64748b" font-size="11" font-family="'Courier New',monospace">USUARIO</text>
+        <rect x="20" y="100" width="160" height="160" rx="14" fill="url(#boxGrad)" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5"/>
+        <circle cx="100" cy="140" r="18" stroke="#22d3ee" stroke-width="2" fill="none"/>
+        <circle cx="100" cy="140" r="5" fill="#22d3ee" opacity="0.6"/>
+        <line x1="80" y1="180" x2="120" y2="180" stroke="#22d3ee" stroke-width="2" opacity="0.5"/>
+        <line x1="74" y1="192" x2="126" y2="192" stroke="#22d3ee" stroke-width="2" opacity="0.35"/>
+        <line x1="68" y1="204" x2="132" y2="204" stroke="#22d3ee" stroke-width="2" opacity="0.2"/>
+        <text x="100" y="235" text-anchor="middle" fill="#64748b" font-size="14" font-family="'Courier New',monospace" font-weight="600">USUARIO</text>
 
         <!-- arrow -->
-        <line x1="130" y1="120" x2="190" y2="120" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4 4"/>
-        <polygon points="188,114 200,120 188,126" fill="#22d3ee" opacity="0.4"/>
+        <line x1="180" y1="180" x2="260" y2="180" stroke="#22d3ee" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="6 4"/>
+        <polygon points="256,172 272,180 256,188" fill="#22d3ee" opacity="0.5"/>
 
         <!-- FRONTEND -->
-        <rect x="200" y="58" width="160" height="124" rx="12" fill="url(#boxGrad)" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.4"/>
-        <rect x="212" y="70" width="136" height="22" rx="4" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.2)" stroke-width="0.5"/>
-        <text x="280" y="85" text-anchor="middle" fill="#93c5fd" font-size="10" font-family="'Courier New',monospace">React + Vite + Tailwind</text>
-        <text x="280" y="110" text-anchor="middle" fill="#94a3b8" font-size="13" font-family="'Courier New',monospace">FRONTEND</text>
-        <text x="280" y="130" text-anchor="middle" fill="#64748b" font-size="10">Interfaz conversacional</text>
-        <text x="280" y="146" text-anchor="middle" fill="#64748b" font-size="10">Dashboard · Gráficos</text>
-        <text x="280" y="162" text-anchor="middle" fill="#64748b" font-size="10">UX Cyberpunk</text>
+        <rect x="275" y="70" width="210" height="220" rx="14" fill="url(#boxGradBlue)" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.5"/>
+        <rect x="290" y="88" width="180" height="30" rx="5" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.2)" stroke-width="0.5"/>
+        <text x="380" y="108" text-anchor="middle" fill="#93c5fd" font-size="12" font-family="'Courier New',monospace" font-weight="600">React + Vite + Tailwind</text>
+        <text x="380" y="148" text-anchor="middle" fill="#e2e8f0" font-size="18" font-family="'Courier New',monospace" font-weight="700">FRONTEND</text>
+        <text x="380" y="178" text-anchor="middle" fill="#94a3b8" font-size="13">Interfaz conversacional</text>
+        <text x="380" y="200" text-anchor="middle" fill="#94a3b8" font-size="13">Dashboard · Gráficos</text>
+        <text x="380" y="222" text-anchor="middle" fill="#94a3b8" font-size="13">UX Cyberpunk</text>
+        <text x="380" y="252" text-anchor="middle" fill="#64748b" font-size="11" font-family="'Courier New',monospace">Vercel</text>
 
         <!-- arrow -->
-        <line x1="360" y1="120" x2="420" y2="120" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4 4"/>
-        <polygon points="418,114 430,120 418,126" fill="#22d3ee" opacity="0.4"/>
+        <line x1="485" y1="180" x2="550" y2="180" stroke="#22d3ee" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="6 4"/>
+        <polygon points="546,172 562,180 546,188" fill="#22d3ee" opacity="0.5"/>
 
         <!-- BACKEND -->
-        <rect x="430" y="58" width="160" height="124" rx="12" fill="url(#boxGrad)" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.4"/>
-        <rect x="442" y="70" width="136" height="22" rx="4" fill="rgba(34,211,238,0.1)" stroke="rgba(34,211,238,0.2)" stroke-width="0.5"/>
-        <text x="510" y="85" text-anchor="middle" fill="#67e8f9" font-size="10" font-family="'Courier New',monospace">Spring Boot 3.5 + Spring AI</text>
-        <text x="510" y="110" text-anchor="middle" fill="#94a3b8" font-size="13" font-family="'Courier New',monospace">BACKEND</text>
-        <text x="510" y="130" text-anchor="middle" fill="#64748b" font-size="10">API REST · Java 21</text>
-        <text x="510" y="146" text-anchor="middle" fill="#64748b" font-size="10">Lógica de negocio ERP</text>
-        <text x="510" y="162" text-anchor="middle" fill="#64748b" font-size="10">Orquestación IA</text>
+        <rect x="565" y="70" width="210" height="220" rx="14" fill="url(#boxGrad)" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.5"/>
+        <rect x="580" y="88" width="180" height="30" rx="5" fill="rgba(34,211,238,0.1)" stroke="rgba(34,211,238,0.2)" stroke-width="0.5"/>
+        <text x="670" y="108" text-anchor="middle" fill="#67e8f9" font-size="11" font-family="'Courier New',monospace" font-weight="600">Spring Boot 3.5 + Spring AI</text>
+        <text x="670" y="148" text-anchor="middle" fill="#e2e8f0" font-size="18" font-family="'Courier New',monospace" font-weight="700">BACKEND</text>
+        <text x="670" y="178" text-anchor="middle" fill="#94a3b8" font-size="13">API REST · Java 21</text>
+        <text x="670" y="200" text-anchor="middle" fill="#94a3b8" font-size="13">Lógica de negocio ERP</text>
+        <text x="670" y="222" text-anchor="middle" fill="#94a3b8" font-size="13">Orquestación IA</text>
+        <text x="670" y="252" text-anchor="middle" fill="#64748b" font-size="11" font-family="'Courier New',monospace">Railway</text>
 
         <!-- arrow down to DB -->
-        <line x1="510" y1="182" x2="510" y2="220" stroke="#22d3ee" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-        <polygon points="504,218 510,228 516,218" fill="#22d3ee" opacity="0.3"/>
+        <line x1="670" y1="290" x2="670" y2="340" stroke="#22d3ee" stroke-width="2" stroke-opacity="0.4" stroke-dasharray="6 4"/>
+        <polygon points="662,336 670,348 678,336" fill="#22d3ee" opacity="0.4"/>
 
         <!-- MONGODB -->
-        <rect x="446" y="212" width="128" height="28" rx="6" fill="rgba(0,0,0,0.4)" stroke="rgba(34,211,238,0.15)" stroke-width="1"/>
-        <text x="510" y="230" text-anchor="middle" fill="#22d3ee" font-size="11" font-family="'Courier New',monospace">MongoDB</text>
+        <rect x="580" y="342" width="180" height="38" rx="8" fill="rgba(0,0,0,0.4)" stroke="rgba(34,211,238,0.2)" stroke-width="1.5"/>
+        <text x="670" y="366" text-anchor="middle" fill="#22d3ee" font-size="14" font-family="'Courier New',monospace" font-weight="600">MongoDB</text>
 
-        <!-- arrow up-right to Gemini -->
-        <line x1="590" y1="80" x2="690" y2="80" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-        <polygon points="688,74 700,80 688,86" fill="#3b82f6" opacity="0.3"/>
+        <!-- arrow right to Gemini -->
+        <line x1="775" y1="110" x2="840" y2="110" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.4" stroke-dasharray="6 4"/>
+        <polygon points="836,102 852,110 836,118" fill="#3b82f6" opacity="0.4"/>
 
         <!-- GEMINI -->
-        <rect x="700" y="52" width="150" height="56" rx="12" fill="url(#boxGrad)" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.4"/>
-        <text x="775" y="74" text-anchor="middle" fill="#93c5fd" font-size="10" font-family="'Courier New',monospace">Google Gemini</text>
-        <text x="775" y="90" text-anchor="middle" fill="#64748b" font-size="10">IA · Lenguaje Natural</text>
-
-        <!-- arrow down from Gemini to somewhere -->
-        <line x1="775" y1="108" x2="775" y2="220" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.2" stroke-dasharray="4 4"/>
-        <polygon points="769,218 775,228 781,218" fill="#3b82f6" opacity="0.2"/>
-
-        <!-- DEPLOY -->
-        <rect x="700" y="212" width="150" height="28" rx="6" fill="rgba(0,0,0,0.4)" stroke="rgba(59,130,246,0.15)" stroke-width="1"/>
-        <text x="775" y="230" text-anchor="middle" fill="#3b82f6" font-size="11" font-family="'Courier New',monospace">Vercel + Railway</text>
+        <rect x="855" y="70" width="100" height="80" rx="14" fill="url(#boxGradBlue)" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.5"/>
+        <text x="905" y="106" text-anchor="middle" fill="#93c5fd" font-size="12" font-family="'Courier New',monospace" font-weight="600">Google</text>
+        <text x="905" y="126" text-anchor="middle" fill="#e2e8f0" font-size="14" font-family="'Courier New',monospace" font-weight="700">Gemini</text>
       </svg>
     </div>
   </div>
