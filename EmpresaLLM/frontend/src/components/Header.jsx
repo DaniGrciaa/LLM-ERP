@@ -1,5 +1,5 @@
 import React from 'react';
-import { Bot, Zap } from 'lucide-react';
+import { Bot, Zap, Presentation } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Header({ model, setModel, onNewChat }) {
@@ -37,6 +37,15 @@ export default function Header({ model, setModel, onNewChat }) {
           ))}
         </select>
 
+        <a
+          href="/slides.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-3 py-2 bg-cyan-950/30 hover:bg-cyan-900/50 border border-cyan-500/20 text-cyan-400/80 hover:text-cyan-300 rounded font-mono text-xs transition-all"
+        >
+          <Presentation size={14} /> SLIDES
+        </a>
+
         <button
           onClick={onNewChat}
           className="flex items-center gap-2 px-4 py-2 bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/30 text-cyan-300 rounded font-mono text-sm transition-all shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]"
@@ -44,6 +53,7 @@ export default function Header({ model, setModel, onNewChat }) {
           <Zap size={16} /> NEOLINK
         </button>
       </div>
+
     </header>
   );
 }
