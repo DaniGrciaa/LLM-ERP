@@ -9,6 +9,10 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import org.springframework.ai.chat.memory.ChatMemory;
+import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 
 @Service
 public class ChatAgentService {
@@ -26,9 +30,16 @@ public class ChatAgentService {
             ChatLogRepository chatLogRepository) {
 
         this.chatLogRepository = chatLogRepository;
+
+        ChatMemory chatMemory = MessageWindowChatMemory.builder()
+                .maxMessages(100)
+                .chatMemoryRepository(new InMemoryChatMemoryRepository())
+                .build();
+
         this.chatClient = builder
                 .defaultSystem("Eres el agente inteligente de un ERP de inventario llamado Stock Atelier. Tu trabajo es ayudar al usuario a gestionar productos, proveedores, pedidos, desechos y estadísticas. No inventes datos. Para consultar o modificar información debes usar las tools disponibles. Si falta información obligatoria, pregunta al usuario. Responde de forma clara y breve. Antes de eliminar, desactivar o reducir grandes cantidades de stock, pide confirmación.")
                 .defaultTools(productoService, proveedorService, pedidoService, desechoService, estadisticasService)
+                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
                 .build();
     }
 
@@ -37,6 +48,7 @@ public class ChatAgentService {
 
         String respuestaTexto = chatClient.prompt()
                 .user(userMessage)
+                .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, "default"))
                 .call()
                 .content();
 
